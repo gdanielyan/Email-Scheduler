@@ -5,7 +5,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cantora+One">
 	<style type="text/css">
+
+		#title-header {
+			font-family: "Cantora One";
+			position: absolute;
+			top: 30px;
+			left: 30px;
+			font-size: 5.4em;
+			width: 220px;
+			transform: rotate(-20deg);
+		}
+
 		#sign-in, #sign-up, #mail-message {
 			border: 1px solid #D3D3D3;
 			border-radius: 3px;
@@ -16,7 +28,7 @@
 			position: absolute;
 			float: left;
 			clear: both;
-			top: 35%;
+			top: 40%;
 			left: 50%;
 			transform: translate(-50%, -50%);	
 		}
@@ -54,16 +66,13 @@
 	</style>
 </head>
 <body>
-
+	<div id="title-header">Email<br>Scheduler.</div>
 	<div id="sign-in">
 		<form id="sign-in-form" class="form-horizontal" method="post">
 
 			<legend>Sign in</legend>
-
 			<input type="text" id="username-signin" class="form-control" placeholder="Username" name="username">
-
 			<input type="password" id="password-signin" class="form-control" placeholder="Password" name="password">
-
 			<input type="submit" value="Log In" class="btn btn-primary btn-md btn-block"><br>
 			<p>Don't have an account? <button id="toggle-sign-up" class="btn btn-success btn-xs">Click here</button></p>
 
@@ -74,13 +83,9 @@
 		<form id="sign-up-form" class="form-horizontal" method="post">
 
 			<legend>Sign up</legend>
-
 			<input type="text" id="username-signup" class="form-control" name="username" placeholder="Username">
-
 			<input type="password" id="password-signup" class="form-control" name="password" placeholder="Password">
-
 			<input type="password" id="password-confirm-signup" class="form-control" name="password-confirm" placeholder="Confirm Password">
-
 			<input type="submit" value="Register" class="btn btn-primary btn-md btn-block"><br>
 			<p>Already have an account? <button id="toggle-sign-in" class="btn btn-success btn-xs">Click here</button></p>
 
@@ -91,11 +96,8 @@
 		<form id="message-form" class="form-horizontal" method="post">
 
 			<legend>Email Message</legend>
-
 			<input type="email" id="recipient-email" class="form-control" placeholder="Recipient's Email" name="email">
-
 			<input type="text" id="datepicker" class="form-control" placeholder="Date">
-
 			<label>Time:</label>
 			<select id="hour-select" name="hour">
 				<?php
@@ -104,15 +106,13 @@
 					}
 				?>
 			</select>
-			
 			<select id="minute-select" name="minute">
 				<option value="00">00</option>
 				<option value="30">30</option>
 			</select>
-			
 			<textarea id="email-message" class="form-control" placeholder="Message" rows="10"></textarea>
-
 			<input type="submit" value="Send" class="btn btn-primary btn-md btn-block">
+			
 		</form>
 	</div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
