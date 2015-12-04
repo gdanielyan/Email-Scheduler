@@ -1,0 +1,64 @@
+		#title-header {
+			font-family: "Cantora One";
+			position: absolute;
+			top: 45px;
+			left: 45px;
+			font-size: 5.4em;
+			width: 220px;
+			transform: rotate(-20deg);
+		}
+
+		#sign-in, #sign-up, #mail-message {
+			border: 1px solid #D3D3D3;
+			border-radius: 3px;
+			margin:10px;
+			padding:20px;
+			width: 320px;
+			display:inline-block;
+			position: absolute;
+			float: left;
+			clear: both;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);	
+		}
+
+		#sign-up-form, #sign-in-form {
+			width: 270px;
+		}
+
+		#mail-message, #sign-up {
+			display: none;
+		}
+
+		#mail-message {
+			width: 440px;
+		}
+		
+		input, select, textarea {
+			margin: 5px;
+		}
+
+		textarea {
+			resize: none;
+		}
+
+		#datepicker {
+			display: inline-block;
+			margin-right: 15px;
+			width: 50%;
+		}
+
+		form p {
+			margin-left: 10px;
+		}
+
+		@media (max-width: 480px){
+			#title-header{
+				font-size: 4em;
+			}
+
+			#sign-in, #sign-up, #mail-message {
+				margin: 0 auto;
+			}
+		}
