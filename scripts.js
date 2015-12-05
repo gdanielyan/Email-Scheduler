@@ -1,17 +1,35 @@
 window.addEventListener("load", start, false);
 
+function validateSignUp(passWord, confirmPassword{
+
+	function isUsernameGood(userName){
+		
+	}
+
+	function isPasswordGood(passWord){
+		var pattern = new RegExp("^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$");
+		return pattern.test(passWord);
+	}
+
+	function doPasswordsMatch(){
+		return password === confirmPassword;
+	}
+
+	return isPasswordGood(passWord);
+}
+
 function start(){
 
 	$("#sign-in-form").submit(function(event){
-		
-		
-		
+
 		event.preventDefault();
 	});
 
 	$("#sign-up-form").submit(function(event){
+		//get username and password
+		var password = $("#sign-up-form input[name=password]").val();
+		var confirmPassword = $("#sign-up-form input[name=password-confirm]").val();
 
-		//Validate username, password confirmation, and 
 		event.preventDefault();
 	});
 
