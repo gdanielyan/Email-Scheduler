@@ -62,3 +62,7 @@ form p {
 		margin: 0 auto;
 	}
 }
+
+#sign-up-warnings, #sign-in-warnings, #mail-warnings {
+	color: red;
+}

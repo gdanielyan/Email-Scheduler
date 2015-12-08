@@ -1,9 +1,12 @@
+<?php
+include('webservice.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+	<title>Email Scheduler - Lab 4</title>
 	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cantora+One">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link href="styles.css" type="text/css" rel="stylesheet">
@@ -18,9 +21,10 @@
 			<input type="text" id="username-signin" class="form-control" placeholder="Username" name="username" required>
 			<input type="password" id="password-signin" class="form-control" placeholder="Password" name="password" required>
 			<input type="submit" value="Log In" class="btn btn-primary btn-md btn-block"><br>
-			<p>Don't have an account? <button id="toggle-sign-up" class="btn btn-success btn-xs">Click here</button></p>
+			<p>Don't have an account? <button id="toggle-sign-up" class="btn btn-success btn-xs" type="button">Click here</button></p>
 
 		</form>
+		<p id="sign-in-warnings"></p>
 	</div>
 
 	<div id="sign-up">
@@ -31,9 +35,10 @@
 			<input type="password" id="password-signup" class="form-control" placeholder="Password" name="password" required>
 			<input type="password" id="password-confirm-signup" class="form-control" placeholder="Confirm Password" name="password-confirm" required>
 			<input type="submit" value="Register" class="btn btn-primary btn-md btn-block"><br>
-			<p>Already have an account? <button id="toggle-sign-in" class="btn btn-success btn-xs">Click here</button></p>
+			<p>Already have an account? <button id="toggle-sign-in" class="btn btn-success btn-xs" type="button">Click here</button></p>
 
 		</form>
+		<p id="sign-up-warnings"></p>
 	</div>
 
 	<div id="mail-message">
@@ -56,10 +61,13 @@
 			<input type="submit" value="Send" class="btn btn-primary btn-md btn-block">
 
 		</form>
+		<p id="mail-warnings"></p>
 	</div>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts.js"></script>
+
 </body>
 </html>
