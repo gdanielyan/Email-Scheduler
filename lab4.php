@@ -1,6 +1,3 @@
-<?php
-include('webservice.php');
-?>
 <!DOCTYPE html>
 <html>
 <head>
