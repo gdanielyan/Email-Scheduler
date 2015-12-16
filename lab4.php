@@ -9,6 +9,7 @@
 	<link href="styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+	<button id="btn-log-out" class="btn btn-primary-outline btn-lg pull-right">Log out</button>
 	<div id="title-header">Email<br>Scheduler.</div>
 
 	<div id="sign-in">

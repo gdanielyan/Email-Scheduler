@@ -1,3 +1,10 @@
+#btn-log-out {
+	margin: 15px;
+	border: 3px solid #286090;
+	display: none;
+}
+
+
 #title-header {
 	font-family: "Cantora One";
 	position: absolute;

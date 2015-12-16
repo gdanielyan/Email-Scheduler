@@ -15,18 +15,16 @@ function start(){
 }
 
 function registerUser(e){
+    e.preventDefault();
 
 	var user = $("#username-signup").val(); 
 	var pass = $("#password-signup").val();
 	var pass_confirm = $("#password-confirm-signup").val();
 
-	var userPattern = /^[a-zA-Z0-9]{8,32}$/;
-	var passPattern = /(^(?=.*[^a-zA-Z0-9])(?=.*[a-zA-Z])(?=.*[0-9])\S{8,}$)/;
+    var userValidOrNot = validUsername(user);
+    var passValidOrNot = validPassword(pass);
 
-    var userValidOrNot = user.match(userPattern);
-    var passValidOrNot = pass.match(passPattern);
-
-    if(userValidOrNot && passValidOrNot){
+    if(userValidOrNot && passValidOrNot && pass == pass_confirm){
     	$("#sign-up-warnings").html("");
     	$.post('webservice.php', 
     		{ 
@@ -39,7 +37,7 @@ function registerUser(e){
     				$("#sign-up-warnings").html("Username already exists.");
     			}else if(dataBack == 2){
     				$("#sign-up-warnings").css("color", "green").html("Success");
-    				nextStep();	//Sucess!
+    				showMailForm();	//Sucess!
     			}else if(dataBack == 3){
     				$("#sign-up-warnings").html("Username format is incorrect.");
     			}else if(dataBack == 4){
@@ -50,14 +48,13 @@ function registerUser(e){
     		});
 
     }else if(userValidOrNot === null){
-    	$("#sign-up-warnings").html("Username must contain 8-32 characters/numbers.");
+    	$("#sign-up-warnings").html("Username must contain 4 or more characters with no spaces.");
     }else if(passValidOrNot === null){
-    	$("#sign-up-warnings").html("Password must contain 8 or more characters, with 1 letter, 1 number, and 1 special char.");
-    }else if(!(pass === pass_confirm)){
+    	$("#sign-up-warnings").html("Password must contain 8 or more characters, 1 letter, 1 number, and 1 special character.");
+    }else if(pass != pass_confirm){
     	$("#sign-up-warnings").html("Password confirmation failed.");
     }
 
-    e.preventDefault();
 }
 
 function signInUser(e){
@@ -75,7 +72,7 @@ function signInUser(e){
     				$("#sign-in-warnings").html("Username cannot be found.");
     			}else if(dataBack == 2){
     				$("#sign-in-warnings").css("color", "green").html("Success");
-    				nextStep();
+    				showMailForm();
     			}else if(dataBack == 3){
     				$("#sign-in-warnings").html("Password entered was wrong.");
     			}
@@ -83,20 +80,66 @@ function signInUser(e){
 }
 
 function sendEmail(e){
+    e.preventDefault();
+    var email = $('#recipient-email').val();
+    var date = $('#datepicker').val();
+    var hour = $('#hour-select option:selected').val();
+    var minute = $('#minute-select option:selected').val();
+    var sent = false;
 
+    $.post('webserice.php',
+        {
+            email: email,
+            date: date,
+            hour: hour,
+            minute: minute,
+            sent: sent
+        }, function(dataBack){
 
+        });
 }
 
-function nextStep(){
+function showMailForm(){
 	$("#sign-up").fadeOut();
 	$("#sign-in").fadeOut();
-	$("#mail-message").fadeIn();
+	$("#mail-message").delay(300).fadeIn();
+    $('#btn-log-out').delay(300).fadeIn();
 }
 
 
+function validPassword(pass){
 
+    var digit = 0, letter = 0, specialChar = 0; 
 
+    function hasSpecialChar(ch){
+        return (ch == '!' || ch == '@' || ch == '#' || ch == '$' || ch == '%' || ch == '*' || ch == '(' || ch == ')' || ch == '+' || ch == '=' || ch == '.');
+    }
 
+    function hasDigit(ch){
+        return !isNaN(ch);
+    }
+
+    function isLetter(cha){
+        var ch = cha.charCodeAt(0);
+        return ( ((ch >= 65) && (ch <= 90)) || ((ch >= 97) && (ch <= 122)) );
+    }
+
+    for(var i =0; i<pass.length; i++){
+        var c = pass.charAt(i);
+        if(hasSpecialChar(c)){
+            specialChar++;
+        }if(hasDigit(c)){
+            digit++;
+        }if(isLetter(c)){
+            letter++;
+        }
+    }
+    return (specialChar > 0 && digit > 0 && letter > 7);
+}
+
+function validUsername(u){//No white space in username
+  return !(u.indexOf(' ') >= 0);
+}
 //Toggle between sign-in and sign-up forms
 $(document).ready(function($) {
 	$("#toggle-sign-in").click(function(e){
